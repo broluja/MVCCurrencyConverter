@@ -33,9 +33,6 @@ class ConverterApp(MDApp):
         self.manager_screen.add_widget(self.manager_screen.create_screen('main'))
         return self.manager_screen
 
-    def get_first(self):
-        self.manager_screen.switch_screen('first')
-
 
 if __name__ == '__main__':
     ConverterApp().run()
