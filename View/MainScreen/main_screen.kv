@@ -1,0 +1,49 @@
+
+<MainScreenView>
+
+    MDTopAppBar:
+        title: "Currency Converter"
+        anchor_title: "left"
+        right_action_items:
+            [
+            ["power", lambda x: app.stop(), "Exit"],
+            ["swap-horizontal", lambda x: root.switch_currencies(), "Switch currencies"],
+            ["cash-100", lambda x: app.manager_screen.switch_screen('first'), "Money"],
+            ["format-list-text", lambda x: app.manager_screen.switch_screen('second'), "Currencies"],
+            ]
+
+    MyLabel:
+        id: currency_label
+        text: 'EUR to [color=#e87b27]RSD[/color]'
+        pos_hint: {'center_x': .5, 'top': .8}
+
+    MyLabel:
+        id: result_label
+        text: ''
+        pos_hint: {'center_x': .5, 'top': .7}
+
+    MDTextField:
+        id: input
+        hint_text: 'Enter value'
+        pos_hint: {'center_x': .5, 'top': .5}
+        size_hint: None, None
+        width: dp(200)
+        font_size: dp(32)
+
+    MDRectangleFlatIconButton:
+        icon: 'currency-eur'
+        pos_hint: {'center_x': .5, 'top': .3}
+        size_hint: None, None
+        text: 'Convert'
+        font_size: dp(28)
+        on_press: root.convert()
+
+
+<MyLabel@MDLabel>:
+    size_hint: None, None
+    width: dp(450)
+    halign: 'center'
+    theme_text_color: 'Hint'
+    font_style: 'H4'
+    bold: True
+    markup: True

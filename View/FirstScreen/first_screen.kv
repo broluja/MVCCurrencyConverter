@@ -1,0 +1,63 @@
+
+<FirstScreenView>
+    on_leave:
+        drop_item_one.text = 'From Currency'
+        drop_item_two.text = 'To Currency'
+        amount_input.text = ''
+        result.text = 'Choose your currencies'
+
+    MDTopAppBar:
+        title: "Currency Converter"
+        anchor_title: "left"
+        right_action_items:
+            [
+            ["power", lambda x: app.stop(), "Exit"],
+            ["home", lambda x: app.manager_screen.switch_screen('main'), "Home"],
+            ["cash-100", lambda x: app.manager_screen.switch_screen('first'), "Money"],
+            ["format-list-text", lambda x: app.manager_screen.switch_screen('second'), "Currencies"],
+            ]
+
+    MyRoundButton:
+        id: drop_item_one
+        text: 'From Currency'
+        pos_hint: {'center_x': .3, 'center_y': .8}
+        on_press: root.open_menu_one()
+
+    MyRoundButton:
+        id: drop_item_two
+        text: 'To Currency'
+        pos_hint: {'center_x': .7, 'center_y': .8}
+        on_press: root.open_menu_two()
+
+    MDTextField:
+        id: amount_input
+        hint_text: 'Enter value'
+        pos_hint: {'center_x': .5, 'top': .65}
+        size_hint: None, None
+        width: dp(200)
+        font_size: dp(32)
+
+    MyRoundButton:
+        text: 'CALCULATE'
+        font_size: dp(28)
+        pos_hint: {'center_x': .5, 'top': .5}
+        on_press: root.buy_money()
+
+    MyLabel:
+        id: result
+        text: 'Choose your currencies'
+        pos_hint: {'center_x': .5, 'top': .4}
+
+
+<MyLabel@MDLabel>:
+    size_hint: None, None
+    width: dp(450)
+    halign: 'center'
+    theme_text_color: 'Hint'
+    font_style: 'H4'
+    bold: True
+    markup: True
+
+<MyRoundButton@MDRoundFlatIconButton>
+    size_hint: None, None
+    font_size: dp(22)

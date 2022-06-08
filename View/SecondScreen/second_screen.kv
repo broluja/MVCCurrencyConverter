@@ -1,0 +1,44 @@
+#:import os os
+
+<SecondScreenView>
+    recycleView: recycleView
+    FitImage:
+        source: f"{os.environ['CURRENCY_CONVERTER_ROOT']}/assets/images/bg.jpg"
+        canvas:
+            Color:
+                rgba: 0, 0, 0, .4
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    MDTopAppBar:
+        title: "Currency Converter"
+        anchor_title: "left"
+        right_action_items:
+            [
+            ["power", lambda x: app.stop(), "Exit"],
+            ["home", lambda x: app.manager_screen.switch_screen('main'), "Home"],
+            ["cash-100", lambda x: app.manager_screen.switch_screen('first'), "Money"],
+            ["format-list-text", lambda x: app.manager_screen.switch_screen('second'), "Currencies"],
+            ]
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(70)
+        spacing: dp(5)
+        RV:
+            id: recycleView
+
+
+<CoverImage@CoverBehavior+Image>:
+    reference_size: self.texture_size
+
+<RV>:
+    viewclass: 'Label'
+    RecycleBoxLayout:
+        spacing: dp(10)
+        default_size: None, dp(70)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
