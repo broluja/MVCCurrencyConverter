@@ -52,6 +52,12 @@ class FirstScreenView(MDScreen):
     def option_callback(self, x):
         self.menu.caller.text = str(x)
         self.menu.dismiss()
+        from_value = self.ids.drop_item_one.text[:3]
+        to_value = self.ids.drop_item_two.text[:3]
+        if not from_value.isupper() or not to_value.isupper():
+            return
+        else:
+            self.get_rate()
 
     def buy_money(self):
         from_value = self.ids.drop_item_one.text[:3]
@@ -64,7 +70,6 @@ class FirstScreenView(MDScreen):
             return
         try:
             amount = float(self.ids.amount_input.text)
-            self.get_rate()
             multiplier = self.rate
             result = round(multiplier * amount, 2)
             self.ids.result.text = f'For {amount} {from_value}\n you get {result} {to_value}'
