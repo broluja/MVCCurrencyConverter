@@ -1,4 +1,17 @@
 
+<MyLabel@MDLabel>:
+    size_hint: None, None
+    width: dp(450)
+    halign: 'center'
+    theme_text_color: 'Hint'
+    font_style: 'H4'
+    bold: True
+    markup: True
+
+<MyRoundButton@MDRoundFlatIconButton>
+    size_hint: None, None
+    font_size: dp(22)
+
 <FirstScreenView>
     on_leave:
         drop_item_one.text = 'From Currency'
@@ -47,17 +60,3 @@
         id: result
         text: 'Choose your currencies'
         pos_hint: {'center_x': .5, 'top': .4}
-
-
-<MyLabel@MDLabel>:
-    size_hint: None, None
-    width: dp(450)
-    halign: 'center'
-    theme_text_color: 'Hint'
-    font_style: 'H4'
-    bold: True
-    markup: True
-
-<MyRoundButton@MDRoundFlatIconButton>
-    size_hint: None, None
-    font_size: dp(22)

@@ -1,7 +1,7 @@
 import os
 
 from kivymd.app import MDApp
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager, WipeTransition
 from kivy.clock import Clock
 
 from View.screens import screens
@@ -13,6 +13,7 @@ class ManagerScreen(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
+        self.transition = WipeTransition()
 
     def create_screen(self, name_screen):
         if name_screen not in self._screens:

@@ -1,5 +1,8 @@
 #:import os os
 
+<CoverImage@CoverBehavior+Image>:
+    reference_size: self.texture_size
+
 <SecondScreenView>
     recycleView: recycleView
     FitImage:
@@ -28,10 +31,6 @@
         spacing: dp(5)
         RV:
             id: recycleView
-
-
-<CoverImage@CoverBehavior+Image>:
-    reference_size: self.texture_size
 
 <RV>:
     viewclass: 'Label'
