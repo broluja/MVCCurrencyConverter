@@ -1,19 +1,21 @@
+#:import platform kivy.platform
 
 <MyLabel@MDLabel>:
     size_hint: None, None
     width: dp(450)
     halign: 'center'
     theme_text_color: 'Hint'
-    font_style: 'H4'
+    font_style: app.font_size
     bold: True
     markup: True
 
 <MainScreenView>
     on_leave:
         result_label.text = ''
+        input.text = ''
 
     MDTopAppBar:
-        title: "Currency Converter"
+        title: "Currency Converter" if platform != 'android' else 'Converter'
         anchor_title: "left"
         right_action_items:
             [
@@ -31,7 +33,7 @@
     MyLabel:
         id: result_label
         text: ''
-        pos_hint: {'center_x': .5, 'top': .7}
+        pos_hint: {'center_x': .5, 'top': .65}
 
     MDTextField:
         id: input
@@ -46,5 +48,5 @@
         pos_hint: {'center_x': .5, 'top': .3}
         size_hint: None, None
         text: 'Convert'
-        font_size: dp(28)
+        font_size: app.button_size
         on_press: root.convert()

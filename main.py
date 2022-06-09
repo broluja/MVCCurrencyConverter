@@ -3,6 +3,7 @@ from pathlib import Path
 
 from kivy import platform
 from kivy.config import Config
+from kivy.metrics import dp
 
 if platform == 'android':
     Config.set("graphics", "width", "630")
@@ -25,6 +26,12 @@ class ConverterApp(MDApp):
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.primary_palette = 'DeepOrange'
         self.manager_screen = ManagerScreen()
+        if platform != 'android':
+            self.button_size = dp(28)
+            self.font_size = 'H3'
+        else:
+            self.button_size = dp(16)
+            self.font_size = 'H5'
 
     def __str__(self):
         return 'Converter App'

@@ -56,7 +56,7 @@ class MainScreenView(MDScreen):
             try:
                 customer_input = float(self.ids.input.text)
             except ValueError:
-                self.ids.result_label.text = f'Please enter the valid amount'
+                self.ids.result_label.text = f'Please enter valid amount'
                 return
             one_din = self.rate
             if self.rate == 0:

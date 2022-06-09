@@ -4,13 +4,13 @@
     width: dp(450)
     halign: 'center'
     theme_text_color: 'Hint'
-    font_style: 'H4'
+    font_style: app.font_size
     bold: True
     markup: True
 
 <MyRoundButton@MDRoundFlatIconButton>
     size_hint: None, None
-    font_size: dp(22)
+    font_size: app.button_size
 
 <FirstScreenView>
     on_leave:
@@ -20,7 +20,7 @@
         result.text = 'Choose your currencies'
 
     MDTopAppBar:
-        title: "Currency Converter"
+        title: "Currency Converter" if platform != 'android' else 'Converter'
         anchor_title: "left"
         right_action_items:
             [
@@ -59,4 +59,4 @@
     MyLabel:
         id: result
         text: 'Choose your currencies'
-        pos_hint: {'center_x': .5, 'top': .4}
+        pos_hint: {'center_x': .5, 'top': .35}

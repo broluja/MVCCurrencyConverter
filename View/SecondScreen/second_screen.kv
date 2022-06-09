@@ -15,7 +15,7 @@
                 size: self.size
 
     MDTopAppBar:
-        title: "Currency Converter"
+        title: "Currency Converter" if platform != 'android' else 'Converter'
         anchor_title: "left"
         right_action_items:
             [
