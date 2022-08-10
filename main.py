@@ -3,19 +3,12 @@ from pathlib import Path
 
 from kivy import platform
 from kivy.config import Config
+if platform == 'android': Config.set("graphics", "width", "630"); Config.set("graphics", "height", "950")
+else: Config.set("graphics", "width", "1200"); Config.set("graphics", "height", "900")
 from kivy.metrics import dp
-
-if platform == 'android':
-    Config.set("graphics", "width", "630")
-    Config.set("graphics", "height", "950")
-else:
-    Config.set("graphics", "width", "1200")
-    Config.set("graphics", "height", "860")
-
 from kivymd.app import MDApp
 
 from View.Managers.manager_screen import ManagerScreen
-
 
 os.environ['CURRENCY_CONVERTER_ROOT'] = str(Path(__file__).parent)
 

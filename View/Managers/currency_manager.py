@@ -13,8 +13,7 @@ class CurrencyManager(object):
 
         def receiving_data(request, result):
             data = result['results']
-            data = list(data.items())
-            data.sort()
+            data = sorted(data.items())
             currency_lst = []
             for name, currency in data:
                 name = currency['currencyName']
@@ -32,7 +31,7 @@ class CurrencyManager(object):
             if on_failure:
                 on_failure('Check your internet connection')
 
-        req = UrlRequest(url, on_success=receiving_data, on_failure=data_failing, on_error=data_error)
+        UrlRequest(url, on_success=receiving_data, on_failure=data_failing, on_error=data_error)
 
     def get_exchange_rate(self, currency_one, currency_two, on_complete, on_failure):
         endpoint = f'api/v7/convert?q={currency_one}_{currency_two}&compact=ultra&apiKey={self.api_key}'
@@ -51,7 +50,7 @@ class CurrencyManager(object):
             if on_failure:
                 on_failure('Check your internet connection')
 
-        req = UrlRequest(url, on_success=receiving_rate, on_failure=rate_failing, on_error=rate_error, timeout=1)
+        UrlRequest(url, on_success=receiving_rate, on_failure=rate_failing, on_error=rate_error, timeout=1)
 
     def get_list_currencies(self, on_complete, on_failure):
         endpoint = f"api/v7/currencies?apiKey={self.api_key}"
@@ -59,8 +58,7 @@ class CurrencyManager(object):
 
         def receiving_data(request, result):
             data = result['results']
-            data = list(data.items())
-            data.sort()
+            data = sorted(data.items())
             menu_list = []
             for _, curr in data:
                 abbreviation = curr['currencyName']
@@ -78,4 +76,4 @@ class CurrencyManager(object):
             if on_failure:
                 on_failure('Check your internet connection')
 
-        req = UrlRequest(url, on_success=receiving_data, on_failure=data_failing, on_error=data_error)
+        UrlRequest(url, on_success=receiving_data, on_failure=data_failing, on_error=data_error)
