@@ -5,7 +5,7 @@ class CurrencyManager(object):
 
     def __init__(self):
         self.url = "https://free.currconv.com/"
-        self.api_key = 'bfc0324d084dd91c0e6f'
+        self.api_key = '4a3e0278c499e50fd5ee'
 
     def get_currencies(self, on_complete, on_failure):
         endpoint = f"api/v7/currencies?apiKey={self.api_key}"
